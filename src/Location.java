@@ -3,11 +3,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import com.csvreader.CsvReader;
+import latlng.LatLng;
 
 
 public class Location {
 
     String longitude, latitude;
+    LatLng coordinates;
     String lineOneAddress, listing;
     String zip;
 
@@ -18,6 +20,12 @@ public class Location {
         latitude = "0";
         lineOneAddress = "";
         listing = "";
+        coordinates = new LatLng();
+    }
+
+    public LatLng getCoordinates()
+    {
+        return coordinates;
     }
 
     public void setZip(String zip)
@@ -91,6 +99,8 @@ public class Location {
                     if (lookedupZip.equals(zip)) {
                         latitude = products.get(products.getHeader(2));
                         longitude = products.get(products.getHeader(3));
+                        coordinates.setLat(Double.parseDouble(latitude));
+                        coordinates.setLng(Double.parseDouble(longitude));
                     }
 
                 }
@@ -103,6 +113,13 @@ public class Location {
         } catch (IOException e2) {
             e2.printStackTrace();
         }
+    }
+
+    public String toString()
+    {
+        String outString = "";
+        outString += lineOneAddress + "/n" + zip + "/n" + listing + "/n";
+        return outString;
     }
 
     /**
