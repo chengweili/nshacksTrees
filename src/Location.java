@@ -2,7 +2,6 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import com.csvreader.CsvReader;
 
 
@@ -107,6 +106,13 @@ public class Location {
     }
 
     /**
+     * start
+     * format
+     * latitude longitude
+     * zip
+     * lineOneAddress
+     * listing
+     * end
      * Writes information in Location class to text file for saving
      * @throws IOException
      */
